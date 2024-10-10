@@ -24,7 +24,7 @@ class Tax():
             "sec-fetch-site": "same-origin",
             "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
         }
-        self.js_code = execjs.compile(open("百旺金穗云-慧代账/baiwang_login.js", "r", encoding="utf-8").read())
+        self.js_code = execjs.compile(open("JS逆向/百旺金穗云-慧代账/baiwang_login.js", "r", encoding="utf-8").read())
     
     # 获取图片及其他登录加密参数
     def get_login_params(self):
