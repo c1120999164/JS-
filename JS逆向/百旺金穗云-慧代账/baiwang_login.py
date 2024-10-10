@@ -1,4 +1,4 @@
-import json
+import json,os
 import time
 import base64
 import execjs
@@ -9,6 +9,7 @@ from loguru import logger
 
 class Tax():
     def __init__(self):
+        self.__path__ = os.path.dirname(os.path.abspath(__file__))
         self.headers = {
             "accept": "*/*",
             "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -24,7 +25,8 @@ class Tax():
             "sec-fetch-site": "same-origin",
             "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
         }
-        self.js_code = execjs.compile(open("JS逆向/百旺金穗云-慧代账/baiwang_login.js", "r", encoding="utf-8").read())
+        with open(os.path.join(self.__path__, "baiwang_login.js"), "r", encoding="utf-8") as js_file:
+            self.js_code = execjs.compile(js_file.read())
     
     # 获取图片及其他登录加密参数
     def get_login_params(self):
