@@ -9,7 +9,6 @@ from loguru import logger
 
 class Tax():
     def __init__(self):
-        self.__path__ = os.path.dirname(os.path.abspath(__file__))
         self.headers = {
             "accept": "*/*",
             "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -25,6 +24,7 @@ class Tax():
             "sec-fetch-site": "same-origin",
             "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
         }
+        self.__path__ = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(self.__path__, "baiwang_login.js"), "r", encoding="utf-8") as js_file:
             self.js_code = execjs.compile(js_file.read())
     
